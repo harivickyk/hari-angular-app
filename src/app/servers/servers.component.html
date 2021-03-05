@@ -1,7 +1,17 @@
 <app-server></app-server>
 <app-server></app-server>
 
-<button class="btn btn-primary" 
-[disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+<section>
+    <div class="row">
+        <input type="text" class="form-control" (input)="onUpdateServerName($event)"/>
+        
+        <p>{{ serverName }}</p>
 
-<p>{{ setServerCreationStatus }}</p>
+        <button class="btn btn-primary" 
+        [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+        
+        <p>{{ setServerCreationStatus }}</p>
+    </div>
+</section>
+
+
