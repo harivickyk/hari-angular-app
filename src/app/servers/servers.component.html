@@ -3,14 +3,18 @@
 
 <section>
     <div class="row">
-        <input type="text" class="form-control" (input)="onUpdateServerName($event)"/>
-        
-        <p>{{ serverName }}</p>
+        <input type="text" class="form-control" [(ngModel)]="serverName"/>
+
+        <!-- <p>{{ serverName }}</p> -->
 
         <button class="btn btn-primary" 
         [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
         
-        <p>{{ setServerCreationStatus }}</p>
+        <!-- <p>{{ setServerCreationStatus }}</p> -->
+        <p *ngIf="serverCreated; else noServer">Server was created. Server name is {{ serverName }}</p>
+        <ng-template #noServer>
+            <p>No Server was created</p>
+        </ng-template>
     </div>
 </section>
 
