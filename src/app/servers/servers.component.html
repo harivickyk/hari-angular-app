@@ -1,6 +1,3 @@
-<app-server></app-server>
-<app-server></app-server>
-
 <section>
     <div class="row">
         <input type="text" class="form-control" [(ngModel)]="serverName"/>
@@ -17,5 +14,7 @@
         </ng-template>
     </div>
 </section>
+
+<app-server *ngFor="let server of servers; let i = index"></app-server>
 
 
