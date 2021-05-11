@@ -5,7 +5,10 @@ import { RecipeService } from "../recipes/recipe.service";
 import { map, tap } from 'rxjs/operators';
 import { AuthService } from "../auth/auth/auth.service";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
+
 export class DataStorageService {
 
     constructor(private http: HttpClient,
