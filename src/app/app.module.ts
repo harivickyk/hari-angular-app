@@ -6,10 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeModule } from './recipes/recipe.module';
-import { ShoppingListMoudle } from './shopping-list/shopping-list.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -18,13 +15,10 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent
   ],
   imports: [
-    BrowserModule, 
-    RecipeModule,
-    ShoppingListMoudle,
+    BrowserModule,
+    AppRoutingModule, 
     CoreModule,
-    AuthModule,
     SharedModule, 
-    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { AuthComponent } from "./auth/auth/auth.component";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { RecipesComponent } from "./recipes/recipes.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
 const appRoutes: Routes = [
     {
@@ -11,13 +9,27 @@ const appRoutes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'recipes', //lazy-loading
+        loadChildren: () => import('./recipes/recipe.module').then(m => m.RecipeModule)
+    },
+    {
+        path: 'shopping-list',
+        loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListMoudle)
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    },
+    {
         path: '**', 
         component: RecipesComponent
     }
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, {
+        preloadingStrategy: PreloadAllModules
+    })],
     exports: [RouterModule]
 
 })
