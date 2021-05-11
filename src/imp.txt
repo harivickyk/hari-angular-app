@@ -3,7 +3,11 @@ Part 79 to 82  - Lifecycle Hooks in Action
 
 Observables / Subject
 Part 178 - Subjects => data pass across components
+https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
 
-Forms
+Modules / Services
+Pt 334
+
+AOT (must be known)
 
 
