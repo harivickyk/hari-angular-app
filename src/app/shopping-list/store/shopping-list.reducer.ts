@@ -52,27 +52,31 @@ export function shoppingListReducer(
             So therefore, always edit your data immutability like we do it here, 
             return a new state */
 
-            const ing = state.ingredients[action.payload.index];
+            const ing = state.ingredients[state.editedIngredientIndex];
             const updatedIng = {
                 ...ing,
-                ...action.payload.ingredient
+                ...action.payload
 
             };
 
             const updatedIngredients = [...state.ingredients];
-            updatedIngredients[action.payload.index] = updatedIng;
+            updatedIngredients[state.editedIngredientIndex] = updatedIng;
 
             return {
                 ...state,
-                ingredients: updatedIngredients
+                ingredients: updatedIngredients,
+                editedIngredient: null,
+                editedIngredientIndex: -1
             };
 
         case ShoppingListActions.DELETE_INGREDIENT:
             return {
                 ...state,
                 ingredients: state.ingredients.filter((ig, igIndex) => {
-                    return igIndex !== action.payload
-                })
+                    return igIndex !== state.editedIngredientIndex
+                }),
+                editedIngredient: null,
+                editedIngredientIndex: -1
             };
 
         case ShoppingListActions.START_EDIT:

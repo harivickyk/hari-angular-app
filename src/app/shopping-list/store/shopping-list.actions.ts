@@ -27,15 +27,13 @@ export class UpdateIngredientReducer implements Action {
     //type safety - prevention from outside this code
     readonly type = UPDATE_INGREDIENT;
 
-    constructor(public payload: {index: number, ingredient: Ingredient}) {}
+    constructor(public payload: Ingredient) {}
     
 }; 
 
 export class DeleteIngredientReducer implements Action {
     //type safety - prevention from outside this code
     readonly type = DELETE_INGREDIENT;
-
-    constructor(public payload: number) {}
     
 }; 
 
