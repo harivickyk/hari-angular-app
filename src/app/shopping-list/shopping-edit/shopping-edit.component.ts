@@ -24,17 +24,36 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     private store: Store<fromShoppingList.AppState>) { }
 
   ngOnInit(): void {
-    this.subscription = this.slService.startedEditing.subscribe(
-      (index: number) => {
-        this.editedItemIndex = index;
+    console.log('reached edit shopping');
+    //using ngRX
+    this.subscription = this.store.select('shoppingList').subscribe(stateData => {
+      console.log(stateData);
+      if(stateData.editedIngredientIndex > -1) {
         this.editMode = true;
-        this.editedItem = this.slService.getIngredient(index);
+        this.editedItem = stateData.editedIngredient;
+        this.editedItemIndex = stateData.editedIngredientIndex;
         this.slForm.setValue({
           name: this.editedItem.name,
           amount: this.editedItem.amount
-        })
+        });
       }
-    );
+      else {
+        this.editMode = false;
+      }
+    });
+
+    //using service
+    // this.subscription = this.slService.startedEditing.subscribe(
+    //   (index: number) => {
+    //     this.editedItemIndex = index;
+    //     this.editMode = true;
+    //     this.editedItem = this.slService.getIngredient(index);
+    //     this.slForm.setValue({
+    //       name: this.editedItem.name,
+    //       amount: this.editedItem.amount
+    //     })
+    //   }
+    // );
   }
 
   OnAddItem(form: NgForm) {
@@ -61,7 +80,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   onClear() {
     this.slForm.reset();
-    this.editMode=false;
+    this.editMode = false;
+    this.store.dispatch(new ShoppingListActions.StopEditReducer());
   }
 
   onDelete() {
@@ -72,6 +92,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.store.dispatch(new ShoppingListActions.StopEditReducer());
   }
 
 }
