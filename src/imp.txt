@@ -1,13 +1,15 @@
-Lifecycle Hooks
-Part 79 to 82  - Lifecycle Hooks in Action
+Some Important Parts to revisit
 
-Observables / Subject
-Part 178 - Subjects => data pass across components
-https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
+Part 79/82 - Lifecycle Hooks in Action
+Part 178 -  Subjects => data pass across components
+Part 329/332 -  Lazy Loading
+Part 334 -  Modules / Services
+Part 335 -  AOT
+Part 345 -  NGRX
+Part 376 -  Store Dev Tools for ngrx inspection
+Part 377 -  Router Store
 
-Modules / Services
-Pt 334
 
-AOT (must be known)
-
-
+------------------------------------------------------------------------------------------
+LINKS
+1. Observables / Subject: https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3

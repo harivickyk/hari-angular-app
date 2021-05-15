@@ -32,6 +32,7 @@ const handleAuthentication = (
     userId: localId,
     token: idToken,
     expiryDate: expDate,
+    redirect: true
   });
 };
 
@@ -79,7 +80,7 @@ export class AuthEffects {
           )
           .pipe(
             tap((resData) => {
-              this.authService.autoLogOut(+resData.expiresIn * 1000);
+              this.authService.autoLogOut(+resData.expiresIn * 10000);
             }),
             map((resData) => {
               return handleAuthentication(
@@ -102,8 +103,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LOGIN),
-        tap(() => {
-          this.router.navigate(['/']);
+        tap((authSuccessAction: AuthActions.Login) => {
+          if(authSuccessAction.payload.redirect) {
+            this.router.navigate(['/']);
+          }
         })
       ),
     { dispatch: false }
@@ -185,13 +188,14 @@ export class AuthEffects {
             new Date(userData._tokenExpirationDate).getTime() -
             new Date().getTime();
           this.authService.autoLogOut(expTimer);
+
           return new AuthActions.Login({
             email: loadedUser.email,
             userId: loadedUser.id,
             token: loadedUser.token,
             expiryDate: new Date(userData._tokenExpirationDate),
+            redirect: false
           });
-          // this.autoLogOut(expTimer);
         }
         return { type: 'DUMMY' };
       })
