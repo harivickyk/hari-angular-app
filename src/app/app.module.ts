@@ -10,6 +10,8 @@ import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import * as fromApp from './store/app.reducer';
     CoreModule,
     SharedModule, 
     StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects]),
     ReactiveFormsModule,
     HttpClientModule
   ],
