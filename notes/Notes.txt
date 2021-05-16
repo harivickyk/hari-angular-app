@@ -16,6 +16,9 @@ Part 414/418 - Service Workers
 LINKS
 1. Observables / Subject: https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
 
+2. Differential Loading:
+CLI deploys multiple versions of the code.
+to handle new / legacy browsers.
 
 ------------------------------------------------------------------------------------------
 
