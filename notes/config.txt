@@ -1,0 +1,9 @@
+editor.config: settings for writing code
+browserslist: configs on which browsers the app supposed to run
+karma: Testing
+tsconfig: typescript compilation
+tslink: code check
+
+angular.json:
+
+

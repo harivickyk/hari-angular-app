@@ -1,0 +1,9 @@
+ng new <app_name>
+
+ng g c <component_name> --skipTests=<boolean>
+
+ng g d <directive_name>
+
+ng build --prod
+
+ng serve --prod <port_num>
