@@ -8,8 +8,11 @@ Part 335 -  AOT
 Part 345 -  NGRX
 Part 376 -  Store Dev Tools for ngrx inspection
 Part 377 -  Router Store
-
+Part 392 - Hosting Angular Universal Apps
 
 ------------------------------------------------------------------------------------------
 LINKS
 1. Observables / Subject: https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
+
+
+------------------------------------------------------------------------------------------
