@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
 
+This is a demo project developed in parallel while learning angular.
+This project has covered almost all topcis in angular such as Components, Directives, Services, Dependency Injection, Routing, Observables, Pipes, Angular Http Client, Authentication, Angular Application Optimization, Frameworks like rxJs, NgRX and Additional topics like Angular Universal & Angular Material.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
