@@ -7,6 +7,7 @@ import * as fromApp from 'src/app/store/app.reducer';
 import { map } from "rxjs/operators";
 import * as AuthActions from 'src/app/auth/store/auth.action';
 import * as RecipesActions from 'src/app/recipes/store/recipe.action';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-header',
@@ -16,17 +17,22 @@ import * as RecipesActions from 'src/app/recipes/store/recipe.action';
 export class HeaderComponent implements OnInit, OnDestroy {
     collapsed = true;
     isAuthenticated = false;
+    translated = false;
     private userSub!: Subscription;
-    
+
 
     constructor(private dataStorageService: DataStorageService,
         private authService: AuthService,
-        private store: Store<fromApp.AppState>) {}
+        private store: Store<fromApp.AppState>,
+        private translate: TranslateService) {}
 
         ngOnInit(): void {
             // this.userSub = this.authService.user.subscribe(user => {
             //     this.isAuthenticated = !user ? false : true;
             // });
+
+            this.translate.use('en');
+            this.translated = false;
 
             this.userSub = this.store.select('auth').pipe(map(authState => {
                 return authState.user;
@@ -40,8 +46,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         //this.dataStorageService.storeRecipes();
 
         this.store.dispatch(new RecipesActions.StoreRecipes);
-    }   
-    
+    }
+
     onFetchData() {
         //this.dataStorageService.fetchRecipes().subscribe();
 
@@ -56,5 +62,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.userSub.unsubscribe();
+    }
+
+    translateTo() {
+      if(!this.translated) {
+        this.translate.use('ta');
+        this.translated = true;
+      }
+      else {
+        this.translate.use('en');
+        this.translated = false;
+      }
     }
 }
